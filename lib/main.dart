@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api/dio.dart';
-import 'dependency_injection.dart';
+import 'di.dart';
 import 'package:provider/provider.dart';
 import 'package:foodgo/router/router.dart';
 
