@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'api/dio.dart';
+import 'dependency_injection.dart';
 import 'package:provider/provider.dart';
 import 'package:foodgo/router/router.dart';
-
-import 'dependency-injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+
+  getProductById(1);
+  confirmOrder();
+
   runApp(
     Provider(
-      create: (_) => null, 
+      create: (_) => null,
       child: const MyApp(),
     ),
   );
@@ -23,8 +27,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'FoodGo App',
-
       routerConfig: appRouter,
     );
+  }
+}
+
+void getProductById(int id) async {
+  final dioApi = locator<DioApi>();
+  final response = await dioApi.get(endPoint: "/api/products/$id");
+
+  if (response != null) {
+    print("$response");
+  } else {
+    print("failed get product with id $id");
+  }
+}
+
+void confirmOrder() async {
+  final dioApi = locator<DioApi>();
+  final response = await dioApi.post(endPoint: "/api/order/confirm");
+
+  if (response != null) {
+    print("$response");
+  } else {
+    print("failed to order");
   }
 }
