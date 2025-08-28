@@ -3,10 +3,7 @@ import 'package:dio/dio.dart';
 class DioApi {
   final Dio _dio;
 
-  DioApi()
-      : _dio = Dio(
-    BaseOptions(baseUrl: "https://foodgo-sable.vercel.app"),
-  );
+  DioApi(this._dio);
 
   Future<dynamic> get({required String endPoint}) async {
     try {

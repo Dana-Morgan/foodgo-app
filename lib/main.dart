@@ -8,9 +8,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
 
-  getProductById(1);
-  confirmOrder();
-
   runApp(
     Provider(
       create: (_) => null,
@@ -32,24 +29,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void getProductById(int id) async {
-  final dioApi = locator<DioApi>();
-  final response = await dioApi.get(endPoint: "/api/products/$id");
-
-  if (response != null) {
-    print("$response");
-  } else {
-    print("failed get product with id $id");
-  }
-}
-
-void confirmOrder() async {
-  final dioApi = locator<DioApi>();
-  final response = await dioApi.post(endPoint: "/api/order/confirm");
-
-  if (response != null) {
-    print("$response");
-  } else {
-    print("failed to order");
-  }
-}
