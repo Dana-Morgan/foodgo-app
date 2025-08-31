@@ -33,18 +33,18 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: (json['id']),
+      id: json['id'],
       name: json['name'],
       description: json['description'],
-      price: (json['price']),
-      rating: (json['rating']),
-      reviews: (json['reviews']),
+      price: json['price'].toDouble(),
+      rating: json['rating'].toDouble(),
+      reviews: json['reviews'],
       image: json['image'],
       category: json['category'],
-      ingredients: (json['ingredients']),
-      calories: (json['calories']),
+      ingredients: (json['ingredients'] as List).cast<String>(),
+      calories: json['calories'],
       preparationTime: json['preparationTime'],
-      spicyLevel: (json['spicyLevel']),
+      spicyLevel: json['spicyLevel'],
       vegetarian: json['vegetarian'],
       available: json['available'],
     );
