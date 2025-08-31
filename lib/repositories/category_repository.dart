@@ -6,7 +6,7 @@ class CategoryRepository {
 
   CategoryRepository(this.productRepository);
 
-  Future<Set<String>> getCategories() async {
+  Future<List<String>> getCategories() async {
     final List<Product> products = await productRepository.getProducts();
 
     final Set<String> categorySet = {};
@@ -17,6 +17,6 @@ class CategoryRepository {
       }
     }
 
-    return categorySet;
+    return categorySet.toList();
   }
 }
