@@ -121,8 +121,7 @@ class HomePage extends StatelessWidget {
                         viewModel.changeSelectedCategory(
                           viewModel.categories[index],
                         );
-                        viewModel.fetchProducts(viewModel.categories[index]);
-                        //print(viewModel.selectedCategory);
+                       // print(viewModel.selectedCategory);
                       },
                       child: Container(
                         height: 50,

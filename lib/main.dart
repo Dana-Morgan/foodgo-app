@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodgo/repositories/category_repository.dart';
 import 'package:foodgo/repositories/product_repository.dart';
 import 'package:foodgo/view_model/products_view_model.dart';
 import 'di.dart';
@@ -14,11 +13,9 @@ void main() async {
     ChangeNotifierProvider(
       create: (_) =>
           ProductsViewModel(
-              categoryRepository: locator<CategoryRepository>(),
               productRepository: locator<ProductRepository>(),
             )
-            ..fetchCategories()
-            ..fetchProducts("All"),
+            ..fetchProducts(),
       child: const MyApp(),
     ),
   );

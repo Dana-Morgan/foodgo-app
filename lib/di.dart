@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:foodgo/repositories/category_repository.dart';
 import 'package:foodgo/repositories/product_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'api/dio.dart';
@@ -13,8 +12,5 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton<DioApi>(() => DioApi(locator<Dio>()));
   locator.registerLazySingleton<ProductRepository>(
         () => ProductRepository(locator<DioApi>()),
-  );
-  locator.registerLazySingleton<CategoryRepository>(
-        () => CategoryRepository(locator<ProductRepository>()),
   );
 }
